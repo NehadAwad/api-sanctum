@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
-    public function register(){
+    public function register(Request $request){
 
     }
 
-    public function login(){
+    public function login(Request $request){
 
     }
 
