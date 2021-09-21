@@ -37,6 +37,22 @@ class StudentController extends Controller
     }
 
     public function login(Request $request){
+        //validation
+        $request->validate([
+            "email" => "required | email",
+            "password" => "required"
+        ]);
+
+        //check student
+        $student = Student::where("email", "=", $request->email)->first();
+        if(isset($student->id)){
+             
+        }else{
+            return response()->json([
+                "status" => 0,
+                "massage" => "Student not found"
+            ], 404);
+        }
 
     }
 
