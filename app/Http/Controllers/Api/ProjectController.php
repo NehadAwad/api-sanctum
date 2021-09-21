@@ -7,8 +7,8 @@ use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {
-    public function createProject(Request $request){
-
+    public function createProject(Request $request){               
+        
     }
 
     public function listProject(){
