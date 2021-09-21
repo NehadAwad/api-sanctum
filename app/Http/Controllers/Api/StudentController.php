@@ -46,7 +46,20 @@ class StudentController extends Controller
         //check student
         $student = Student::where("email", "=", $request->email)->first();
         if(isset($student->id)){
-             
+             if(Hash::check($request->password, $student->password)){
+                $token = $student->createToken("auth_token")->plainTextToken;
+                
+                return response()->json([
+                    "status" => 1,
+                    "massage" => "Student login succesfully",
+                    "access_token" => $token
+                ]);
+             }else{
+                return response()->json([
+                    "status" => 0,
+                    "massage" => "Password didnot match"
+                ], 404);     
+             }
         }else{
             return response()->json([
                 "status" => 0,
